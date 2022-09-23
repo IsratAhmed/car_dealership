@@ -4,8 +4,8 @@ const Dealership = function(name, carNumber){
     this.carStock = [];
 }
 
-Dealership.prototype.carStock = function(){
-    console.log("There are "+ this.carStock.length + "in stock.");
+Dealership.prototype.countCarStock = function(){
+    return this.carStock.length;
 }
 
 Dealership.prototype.addCarStock  = function (car) {                
@@ -23,7 +23,7 @@ Dealership.prototype.arrayCarManufacturer = function() {
     let carStock = this.carStock;
 
     for(i in carStock){
-       arrayCarManufacturer.push(carStock[i].name);
+        arrayCarManufacturer.push(carStock[i].name);
     }
 
     console.log("Array: " + arrayCarManufacturer);
