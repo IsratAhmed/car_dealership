@@ -1,3 +1,5 @@
+const Car = require('./car.js');
+
 const Dealership = function(name, carNumber){
     this.name = name;
     this.carNumber = carNumber;
@@ -18,20 +20,21 @@ Dealership.prototype.addCarStock  = function (car) {
     
 } 
 
-Dealership.prototype.arrayCarManufacturer = function() {
-    let arrayCarManufacturer = [];
-    let carStock = this.carStock;
+Dealership.prototype.manufacturerName = function() {
 
-    for(i in carStock){
-        arrayCarManufacturer.push(carStock[i].name);
+    let manufacturerName = [];
+
+    let car = this.carStock;
+
+    for(i in car){
+       manufacturerName.push(car[i].manufacturer); 
     }
-
-    console.log("Array: " + arrayCarManufacturer);
+    
+    console.log("Array: " + manufacturerName);
 }
 
-Dealership.prototype.name = function(name) {
-    const message = `${this.name} is the manufacturer of the cars.`
-    console.log(message);
+Dealership.prototype.arrayCarManufacturer = function(manufacturerName) {
+    return this.carStock.filter(element => element.manufacturer == manufacturerName)
 }
 
 Dealership.prototype.maxValue = function() {
@@ -41,7 +44,7 @@ Dealership.prototype.maxValue = function() {
     const increasingAmount = this.carStock.map(Element => Element.price);
 
     return increasingAmount.reduce((previousValue, currentValue) => previousValue + currentValue, value);
-
 }
 
 module.exports = Dealership;
+
